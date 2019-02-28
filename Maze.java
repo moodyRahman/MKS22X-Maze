@@ -11,6 +11,8 @@ private int[][] moves = {
 		{1, 0}, {-1, 0}, {0, -1}, {0, 1},
 			};
 
+private int xcoorstart, ycoorstart;
+
 public Maze(String fname){
 	try {
 		reader(fname);
@@ -34,6 +36,20 @@ private void reader(String fname) throws FileNotFoundException{
 	b = new String[boop.size()];
 	boop.toArray(b);
 }
+
+private boolean findStart(){
+	for (int x = 0; x < b.length; x++){
+		for (int y = 0; y < b[x].length(); y++){
+			if (b[x].contains('S')){
+				xcoorstart = x;
+				ycoorstart = y;
+				return true;
+			}
+		}
+	}
+	return false;
+}
+
 
 
 public static void main(String[] args) {
