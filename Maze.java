@@ -21,6 +21,14 @@ public Maze(String fname){
 		System.exit(0);
 	}
 
+	if (findStart()){
+		System.out.println(xcoorstart);
+		System.out.println(ycoorstart);
+	}
+	else {
+		System.out.println("no start");
+	}
+
 	// for (int x = 0; x<b.length; x++) {
 	// 	System.out.println(b[x]);
 	// }
@@ -40,9 +48,9 @@ private void reader(String fname) throws FileNotFoundException{
 private boolean findStart(){
 	for (int x = 0; x < b.length; x++){
 		for (int y = 0; y < b[x].length(); y++){
-			if (b[x].contains('S')){
-				xcoorstart = x;
+			if (b[x].contains("S")){
 				ycoorstart = y;
+				xcoorstart = x;
 				return true;
 			}
 		}
