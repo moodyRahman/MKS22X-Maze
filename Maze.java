@@ -15,6 +15,10 @@ public Maze(String fname){
 		System.out.println("NOT A VALID FILE >:(");
 		System.exit(0);
 	}
+
+	for (int x = 0; x<b.length; x++) {
+		System.out.println(b[x]);
+	}
 }
 
 private void reader(String fname) throws FileNotFoundException{
