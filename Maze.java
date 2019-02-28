@@ -11,6 +11,9 @@ private int[][] moves = {
 		{1, 0}, {-1, 0}, {0, -1}, {0, 1},
 			};
 
+private int x;
+private int y;
+
 public Maze(String fname){
 	try {
 		reader(fname);
@@ -24,6 +27,19 @@ public Maze(String fname){
 	// }
 }
 
+private boolean findStart(){
+	for (int x = 0; x < b.length; x++) {
+		for (int y = 0; y < b[0].length(); y++) {
+			if (b[x].contains('S')){
+				this.x = x;
+				this.y = y;
+				return true;
+			}
+		}
+	}
+	return false;
+}
+
 private void reader(String fname) throws FileNotFoundException{
 	File fl = new File(fname);
 	Scanner scn = new Scanner(fl);
@@ -35,6 +51,8 @@ private void reader(String fname) throws FileNotFoundException{
 	boop.toArray(b);
 }
 
+
+private void down(){}
 
 public static void main(String[] args) {
 	Maze m = new Maze("dat1.dat");
