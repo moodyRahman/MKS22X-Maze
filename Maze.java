@@ -7,6 +7,9 @@ public class Maze{
 
 private ArrayList<String> boop = new ArrayList<String>();
 private String[] b;
+private int[][] moves = {
+		{1, 0}, {-1, 0}, {0, -1}, {0, 1},
+			};
 
 public Maze(String fname){
 	try {
@@ -16,9 +19,9 @@ public Maze(String fname){
 		System.exit(0);
 	}
 
-	for (int x = 0; x<b.length; x++) {
-		System.out.println(b[x]);
-	}
+	// for (int x = 0; x<b.length; x++) {
+	// 	System.out.println(b[x]);
+	// }
 }
 
 private void reader(String fname) throws FileNotFoundException{
