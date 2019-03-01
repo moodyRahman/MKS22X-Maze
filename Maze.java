@@ -24,24 +24,10 @@ public Maze(String fname){
 
 	toArray();
 
-	for (int x = 0; x < maze.length; x++) {
-		for (int y = 0; y < maze[x].length; y++) {
-			System.out.print(maze[x][y]);
-		}
-		System.out.print("\n");
-	}
-
-	if (findStart()){
-		System.out.println(xcoorstart);
-		System.out.println(ycoorstart);
-	}
-	else {
+	if (!findStart()){
 		System.out.println("no start");
+		System.exit
 	}
-
-	// for (int x = 0; x<b.length; x++) {
-	// 	System.out.println(b[x]);
-	// }
 }
 
 private void toArray(){
