@@ -12,6 +12,7 @@ private int[][] moves = {
 			};
 
 private int xcoorstart, ycoorstart;
+char[][] maze;
 
 public Maze(String fname){
 	try {
@@ -19,6 +20,15 @@ public Maze(String fname){
 	} catch(FileNotFoundException e) {
 		System.out.println("NOT A VALID FILE >:(");
 		System.exit(0);
+	}
+
+	toArray();
+
+	for (int x = 0; x < maze.length; x++) {
+		for (int y = 0; y < maze[x].length; y++) {
+			System.out.print(maze[x][y]);
+		}
+		System.out.print("\n");
 	}
 
 	if (findStart()){
@@ -32,6 +42,15 @@ public Maze(String fname){
 	// for (int x = 0; x<b.length; x++) {
 	// 	System.out.println(b[x]);
 	// }
+}
+
+private void toArray(){
+	maze = new char [b.length][b[0].length()];
+	for (int x = 0; x < b.length; x++){
+		for (int y = 0; y < b[x].length(); y++){
+			maze[x][y] = b[x].charAt(y);
+		}
+	}
 }
 
 private void reader(String fname) throws FileNotFoundException{
