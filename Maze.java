@@ -45,10 +45,10 @@ private void reader(String fname) throws FileNotFoundException{
 	boop.toArray(b);
 }
 
-private boolean findStart(){
+public boolean findStart(){
 	for (int x = 0; x < b.length; x++){
 		for (int y = 0; y < b[x].length(); y++){
-			if (b[x].contains("S")){
+			if (b[x].charAt(y) == 'S'){
 				ycoorstart = y;
 				xcoorstart = x;
 				return true;
@@ -62,6 +62,7 @@ private boolean findStart(){
 
 public static void main(String[] args) {
 	Maze m = new Maze("dat1.dat");
+	System.out.println(m.findStart());
 }
 
 }
