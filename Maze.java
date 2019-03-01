@@ -43,6 +43,21 @@ private void toArray(){
 	}
 }
 
+public int solve(int x, int y){
+	if (maze[x][y] == 'E'){
+		return 1;
+	}
+	if (place(x, y)){
+		for(int c = 0; c < 4; c++){
+			if (solve(x+moves[c][0], y+moves[c][1]) == -1) {
+				return 1;
+			}
+		}
+		maze[x][y] = ' ';
+	}
+	return -1;
+}
+
 private void reader(String fname) throws FileNotFoundException{
 	File fl = new File(fname);
 	Scanner scn = new Scanner(fl);
