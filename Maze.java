@@ -12,6 +12,7 @@ private int[][] moves = {
 			};
 
 private int xcoorstart, ycoorstart;
+private int xcoor, ycoor;
 char[][] maze;
 
 public Maze(String fname){
@@ -28,6 +29,9 @@ public Maze(String fname){
 		System.out.println("no start");
 		System.exit(1);
 	}
+
+	xcoor = xcoorstart;
+	ycoor = ycoorstart;
 }
 
 private void toArray(){
@@ -48,6 +52,14 @@ private void reader(String fname) throws FileNotFoundException{
 	}
 	b = new String[boop.size()];
 	boop.toArray(b);
+}
+
+private boolean place(int x, int y){
+	if (maze[x][y] == ' '){
+		maze[x][y] = '.';
+		return true;
+	}
+	return false;
 }
 
 public boolean findStart(){
