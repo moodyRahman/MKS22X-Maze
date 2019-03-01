@@ -26,7 +26,7 @@ public Maze(String fname){
 
 	if (!findStart()){
 		System.out.println("no start");
-		System.exit
+		System.exit(1);
 	}
 }
 
