@@ -8,7 +8,10 @@ public class Maze{
 private ArrayList<String> boop = new ArrayList<String>();
 private String[] b;
 private int[][] moves = {
-		{1, 0}, {-1, 0}, {0, -1}, {0, 1},
+		{0, 1},
+		{1, 0},
+		{-1, 0},
+		{0, -1},
 			};
 
 private int xcoorstart, ycoorstart;
@@ -59,7 +62,6 @@ private boolean betaPlacer(int x, int y){
 				return true;
 			}
 			// debug();
-			maze[x][y] = ' ';
 		}
 	}
 	return false;
