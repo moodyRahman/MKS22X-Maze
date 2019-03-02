@@ -31,8 +31,29 @@ public Maze(String fname){
 
 	xcoor = xcoorstart;
 	ycoor = ycoorstart;
+	maze[xcoor][ycoor] = ' ';
+	betaPlacer(xcoor, ycoor);
+}
 
-	solve(xcoor, ycoor);
+private boolean betaPlacer(int x, int y){
+	if (maze[x][y] == 'E'){
+		return true;
+	}
+	for (int c = 0; x < 4; c++){
+		if (maze[x][y] == ' '){
+			maze[x][y] = '.';
+			debug();
+			// debug();
+			if (betaPlacer(x+moves[c][0], y+moves[c][1])){
+				debug();
+				return true;
+			}
+			// debug();
+			maze[x][y] = ' ';
+		}
+
+	}
+	return false;
 }
 
 private void toArray(){
@@ -47,7 +68,7 @@ private void toArray(){
 
 private void debug(){
 	System.out.println(Text.go(1,1));
-	System.out.println(this);Text.wait(1000); //adjust this delay
+	System.out.println(this);Text.wait(10); //adjust this delay
 }
 
 private void reader(String fname) throws FileNotFoundException{
@@ -88,7 +109,7 @@ public String toString(){
 
 
 public static void main(String[] args) {
-	Maze m = new Maze("dat1.dat");
+	Maze m = new Maze("dat3.dat");
 }
 
 }
