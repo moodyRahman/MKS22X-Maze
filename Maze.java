@@ -24,7 +24,6 @@ public Maze(String fname){
 	}
 
 	toArray();
-
 	if (!findStart()){
 		System.out.println("no start");
 		System.exit(1);
@@ -32,6 +31,8 @@ public Maze(String fname){
 
 	xcoor = xcoorstart;
 	ycoor = ycoorstart;
+
+	solve(xcoor, ycoor);
 }
 
 private void toArray(){
@@ -43,19 +44,26 @@ private void toArray(){
 	}
 }
 
-public int solve(int x, int y){
+public boolean solve(int x, int y){
+	debug();
 	if (maze[x][y] == 'E'){
-		return 1;
+		return true;
 	}
-	if (place(x, y)){
-		for(int c = 0; c < 4; c++){
-			if (solve(x+moves[c][0], y+moves[c][1]) == -1) {
-				return 1;
+	for(int c = 0; c < 4; c++){
+		if (place(x, y)) {
+			debug();
+			if (solve(x + moves[c][0], y + moves[c][1] ) ){
+				return true;
 			}
+			maze[x][y] = ' ';
 		}
-		maze[x][y] = ' ';
 	}
-	return -1;
+	return false;
+}
+
+private void debug(){
+	System.out.println(Text.go(1,1));
+	System.out.println(this);Text.wait(1000); //adjust this delay
 }
 
 private void reader(String fname) throws FileNotFoundException{
@@ -90,11 +98,21 @@ public boolean findStart(){
 	return false;
 }
 
+public String toString(){
+	String output = "";
+	for (int x = 0; x < maze.length; x++) {
+		for (int y = 0; y < maze[x].length; y++) {
+			output += maze[x][y];
+		}
+		output += "\n";
+	}
+	return output;
+}
+
 
 
 public static void main(String[] args) {
 	Maze m = new Maze("dat1.dat");
-	System.out.println(m.findStart());
 }
 
 }
