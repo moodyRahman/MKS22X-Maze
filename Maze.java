@@ -31,7 +31,7 @@ public Maze(String fname){
 
 	xcoor = xcoorstart;
 	ycoor = ycoorstart;
-	maze[xcoor][ycoor] = ' ';
+	// maze[xcoor][ycoor] = ' ';
 	betaPlacer(xcoor, ycoor);
 }
 
@@ -51,7 +51,16 @@ private boolean betaPlacer(int x, int y){
 			// debug();
 			maze[x][y] = ' ';
 		}
-
+		else if (maze[x][y] == 'S') {
+			debug();
+			// debug();
+			if (betaPlacer(x+moves[c][0], y+moves[c][1])){
+				debug();
+				return true;
+			}
+			// debug();
+			maze[x][y] = ' ';
+		}
 	}
 	return false;
 }
