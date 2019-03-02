@@ -44,22 +44,6 @@ private void toArray(){
 	}
 }
 
-public boolean solve(int x, int y){
-	debug();
-	if (maze[x][y] == 'E'){
-		return true;
-	}
-	for(int c = 0; c < 4; c++){
-		if (place(x, y)) {
-			debug();
-			if (solve(x + moves[c][0], y + moves[c][1] ) ){
-				return true;
-			}
-			maze[x][y] = ' ';
-		}
-	}
-	return false;
-}
 
 private void debug(){
 	System.out.println(Text.go(1,1));
@@ -75,14 +59,6 @@ private void reader(String fname) throws FileNotFoundException{
 	}
 	b = new String[boop.size()];
 	boop.toArray(b);
-}
-
-private boolean place(int x, int y){
-	if (maze[x][y] == ' '){
-		maze[x][y] = '.';
-		return true;
-	}
-	return false;
 }
 
 public boolean findStart(){
