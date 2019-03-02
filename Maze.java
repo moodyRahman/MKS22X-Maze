@@ -14,7 +14,6 @@ private int[][] moves = {
 		{0, -1},
 			};
 
-private int xcoorstart, ycoorstart;
 private int xcoor, ycoor;
 char[][] maze;
 
@@ -31,9 +30,6 @@ public Maze(String fname){
 		System.out.println("no start");
 		System.exit(1);
 	}
-
-	xcoor = xcoorstart;
-	ycoor = ycoorstart;
 	// maze[xcoor][ycoor] = ' ';
 	betaPlacer(xcoor, ycoor);
 }
@@ -97,8 +93,8 @@ public boolean findStart(){
 	for (int x = 0; x < b.length; x++){
 		for (int y = 0; y < b[x].length(); y++){
 			if (b[x].charAt(y) == 'S'){
-				ycoorstart = y;
-				xcoorstart = x;
+				ycoor = y;
+				xcoor = x;
 				return true;
 			}
 		}
