@@ -39,7 +39,7 @@ private boolean betaPlacer(int x, int y){
 	if (maze[x][y] == 'E'){
 		return true;
 	}
-	for (int c = 0; x < 4; c++){
+	for (int c = 0; c < 4; c++){
 		if (maze[x][y] == ' '){
 			maze[x][y] = '.';
 			debug();
