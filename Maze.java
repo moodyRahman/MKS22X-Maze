@@ -15,6 +15,7 @@ private int[][] moves = {
 			};
 
 private int xcoor, ycoor;
+private int steps;
 char[][] maze;
 
 public Maze(String fname){
@@ -41,6 +42,7 @@ private boolean betaPlacer(int x, int y){
 	for (int c = 0; c < 4; c++){
 		if (maze[x][y] == ' '){
 			maze[x][y] = '.';
+			steps++;
 			debug();
 			// debug();
 			if (betaPlacer(x+moves[c][0], y+moves[c][1])){
@@ -49,6 +51,7 @@ private boolean betaPlacer(int x, int y){
 			}
 			// debug();
 			maze[x][y] = ' ';
+			steps--;
 		}
 		else if (maze[x][y] == 'S') {
 			debug();
@@ -74,8 +77,8 @@ private void toArray(){
 
 
 private void debug(){
-	System.out.println(Text.go(1,1));
-	System.out.println(this);Text.wait(10); //adjust this delay
+	System.out.println("\033[2J\033[1;1H");
+	System.out.println(this);Text.wait(100); //adjust this delay
 }
 
 private void reader(String fname) throws FileNotFoundException{
@@ -110,13 +113,14 @@ public String toString(){
 		}
 		output += "\n";
 	}
+	output += steps;
 	return output;
 }
 
 
 
 public static void main(String[] args) {
-	Maze m = new Maze("dat3.dat");
+	Maze m = new Maze("dat4.dat");
 }
 
 }
