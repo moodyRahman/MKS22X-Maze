@@ -31,7 +31,7 @@ public Maze(String fname){
 		System.out.println("no start");
 		System.exit(1);
 	}
-	// maze[xcoor][ycoor] = ' ';
+
 	betaPlacer(xcoor, ycoor);
 }
 
@@ -40,8 +40,8 @@ private boolean betaPlacer(int x, int y){
 		return true;
 	}
 	for (int c = 0; c < 4; c++){
-		if (maze[x][y] == ' '){
-			maze[x][y] = '.';
+		if (maze[x][y] == ' ' || maze[x][y] == '.'){
+			maze[x][y] = '@';
 			steps++;
 			debug();
 			// debug();
@@ -50,7 +50,7 @@ private boolean betaPlacer(int x, int y){
 				return true;
 			}
 			// debug();
-			maze[x][y] = ' ';
+			maze[x][y] = '.';
 			steps--;
 		}
 		else if (maze[x][y] == 'S') {
@@ -120,7 +120,8 @@ public String toString(){
 
 
 public static void main(String[] args) {
-	Maze m = new Maze("dat4.dat");
+	Maze m = new Maze("dat2.dat");
+	System.out.println(m);
 }
 
 }
