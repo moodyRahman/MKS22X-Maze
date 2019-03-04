@@ -71,6 +71,7 @@ public void setAnimated(boolean inp){
 
 public int solve(){
 	betaPlacer(xcoor, ycoor);
+	maze[xcoor][ycoor] = '.';
 	return steps;
 }
 
@@ -128,10 +129,10 @@ public String toString(){
 
 
 public static void main(String[] args) {
-	Maze m = new Maze("dat1.dat");
-	System.out.println(m);
-	m.setAnimated(true);
+	Maze m = new Maze("dat3.dat");
+	m.setAnimated(false);
 	m.solve();
+	System.out.println(m);
 }
 
 }
