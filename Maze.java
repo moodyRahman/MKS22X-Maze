@@ -16,6 +16,7 @@ private int[][] moves = {
 
 private int xcoor, ycoor;
 private int steps;
+private boolean animated;
 char[][] maze;
 
 public Maze(String fname){
@@ -31,8 +32,6 @@ public Maze(String fname){
 		System.out.println("no start");
 		System.exit(1);
 	}
-
-	betaPlacer(xcoor, ycoor);
 }
 
 private boolean betaPlacer(int x, int y){
@@ -43,10 +42,10 @@ private boolean betaPlacer(int x, int y){
 		if (maze[x][y] == ' ' || maze[x][y] == '.'){
 			maze[x][y] = '@';
 			steps++;
-			debug();
+			if (animated) debug();
 			// debug();
 			if (betaPlacer(x+moves[c][0], y+moves[c][1])){
-				debug();
+				if (animated) debug();
 				return true;
 			}
 			// debug();
@@ -54,16 +53,25 @@ private boolean betaPlacer(int x, int y){
 			steps--;
 		}
 		else if (maze[x][y] == 'S') {
-			debug();
+			if (animated) debug();
 			// debug();
 			if (betaPlacer(x+moves[c][0], y+moves[c][1])){
-				debug();
+				if (animated) debug();
 				return true;
 			}
 			// debug();
 		}
 	}
 	return false;
+}
+
+public void setAnimated(boolean inp){
+	animated = inp;
+}
+
+public int solve(){
+	betaPlacer(xcoor, ycoor);
+	return steps;
 }
 
 private void toArray(){
@@ -77,8 +85,8 @@ private void toArray(){
 
 
 private void debug(){
-	System.out.println("\033[2J\033[1;1H");
-	System.out.println(this);Text.wait(100); //adjust this delay
+	System.out.println(Text.go(1,1));
+	System.out.println(this);Text.wait(10); //adjust this delay
 }
 
 private void reader(String fname) throws FileNotFoundException{
@@ -120,8 +128,10 @@ public String toString(){
 
 
 public static void main(String[] args) {
-	Maze m = new Maze("dat2.dat");
+	Maze m = new Maze("dat1.dat");
 	System.out.println(m);
+	m.setAnimated(true);
+	m.solve();
 }
 
 }
