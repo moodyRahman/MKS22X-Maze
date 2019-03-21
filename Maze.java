@@ -17,6 +17,7 @@ private int[][] moves = {
 private int xcoor, ycoor;
 private int steps;
 private boolean animated;
+private int xstart, ystart;
 char[][] maze;
 
 public Maze(String fname){
@@ -72,6 +73,7 @@ public void setAnimated(boolean inp){
 public int solve(){
 	betaPlacer(xcoor, ycoor);
 	maze[xcoor][ycoor] = '.';
+	maze[xstart][ystart] = '@';
 	if (steps == 0){
 		return -1;
 	}
@@ -110,6 +112,9 @@ public boolean findStart(){
 			if (b[x].charAt(y) == 'S'){
 				ycoor = y;
 				xcoor = x;
+
+				ystart = y;
+				xstart = x;
 				return true;
 			}
 		}
@@ -125,16 +130,16 @@ public String toString(){
 		}
 		output += "\n";
 	}
-	output += steps;
+	// output += steps;
 	return output;
 }
 
 
 
 public static void main(String[] args) {
-	Maze m = new Maze("dat7.dat");
-	m.setAnimated(true);
-	m.solve();
+	Maze m = new Maze(args[1]);
+	m.setAnimated(Boolean.parseBoolean(args[0]));
+	System.out.println(m.solve());
 	// System.out.println(m);
 }
 
