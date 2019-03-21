@@ -40,7 +40,7 @@ private boolean betaPlacer(int x, int y){
 		return true;
 	}
 	for (int c = 0; c < 4; c++){
-		if (maze[x][y] == ' ' || maze[x][y] == '.'){
+		if (maze[x][y] == ' ' || maze[x][y] == '.'|| maze[x][y] == 'S'){
 			maze[x][y] = '@';
 			steps++;
 			if (animated) debug();
@@ -54,13 +54,13 @@ private boolean betaPlacer(int x, int y){
 			steps--;
 		}
 		else if (maze[x][y] == 'S') {
-			if (animated) debug();
-			// debug();
-			if (betaPlacer(x+moves[c][0], y+moves[c][1])){
-				if (animated) debug();
-				return true;
-			}
-			// debug();
+			// if (animated) debug();
+			// // debug();
+			// if (betaPlacer(x+moves[c][0], y+moves[c][1])){
+			// 	if (animated) debug();
+			// 	return true;
+			// }
+			// // debug();
 		}
 	}
 	return false;
@@ -72,7 +72,6 @@ public void setAnimated(boolean inp){
 
 public int solve(){
 	betaPlacer(xcoor, ycoor);
-	maze[xcoor][ycoor] = '.';
 	maze[xstart][ystart] = '@';
 	if (steps == 0){
 		return -1;
